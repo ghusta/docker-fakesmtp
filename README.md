@@ -10,6 +10,7 @@ See original [there](https://github.com/Nilhcem/FakeSMTP/blob/master/Dockerfile)
 
 ## Usage
 This allows you to run a SMTP server for testing applications which send mail. Each mail is written to a file in `/var/mail`
+
 Starting a container :
 
     docker run -d -p 2525:25 -v /tmp/fakemail:/var/mail ghusta/fakesmtp:2.0
