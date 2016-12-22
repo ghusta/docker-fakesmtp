@@ -4,4 +4,5 @@ RUN wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip && 
 EXPOSE 25
 VOLUME ["/var/mail"]
 
-CMD java -jar /opt/fakeSMTP-2.0.jar -s -b -o /var/mail
+# Start the STMP server without a GUI (background)
+CMD java -jar /opt/fakeSMTP-2.0.jar --start-server --background --port 25 --output-dir /var/mail
