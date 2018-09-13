@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:10-jre
 
 RUN set -ex; \
     wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
