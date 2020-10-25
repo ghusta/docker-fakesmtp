@@ -1,8 +1,13 @@
 FROM openjdk:8-jre-slim
 
-#No wget command in openjdk slim
-RUN apt-get update && apt-get install -y wget unzip && apt-get autoremove -y && apt-get clean
-RUN wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip && unzip fakeSMTP-latest.zip -d /opt && rm fakeSMTP-latest.zip
+#No wget & unzip binaries in openjdk slim
+RUN apt-get update \
+    && apt-get install -y wget unzip \
+    && wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip \
+    && unzip fakeSMTP-latest.zip -d /opt && rm fakeSMTP-latest.zip \
+    && apt-get remove -y wget unzip \
+    && apt-get autoremove -y \
+    && apt-get clean
 EXPOSE 25
 VOLUME ["/var/mail"]
 
