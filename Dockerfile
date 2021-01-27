@@ -1,4 +1,4 @@
-FROM openjdk:15-slim
+FROM openjdk:17-slim
 
 # See also usage of openjdk:15-alpine tools at https://jpetazzo.github.io/2020/03/01/quest-minimal-docker-images-part-2/
 RUN set -ex; \
