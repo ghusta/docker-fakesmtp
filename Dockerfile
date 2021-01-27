@@ -1,12 +1,12 @@
-FROM openjdk:15-alpine
+FROM openjdk:15-slim
 
 # See also usage of openjdk:15-alpine tools at https://jpetazzo.github.io/2020/03/01/quest-minimal-docker-images-part-2/
 RUN set -ex; \
-    apk update; \
-    apk add wget unzip; \
+    apt update; \
+    apt install -y wget unzip; \
     wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
     unzip fakeSMTP-latest.zip -d /opt; \
-    apk del wget unzip; \
+    apt remove wget unzip; \
     rm fakeSMTP-latest.zip;
 
 EXPOSE 25
