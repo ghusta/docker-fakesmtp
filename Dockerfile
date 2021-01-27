@@ -1,5 +1,6 @@
-FROM openjdk:15
+FROM openjdk:15-alpine
 
+# See also usage of openjdk:15-alpine tools at https://jpetazzo.github.io/2020/03/01/quest-minimal-docker-images-part-2/
 RUN set -ex; \
     wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
     unzip fakeSMTP-latest.zip -d /opt; \
