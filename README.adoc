@@ -4,8 +4,8 @@
 :sectnums:
 :toc: auto
 
-image::https://img.shields.io/docker/pulls/ghusta/fakesmtp.svg[link="https://hub.docker.com/r/ghusta/fakesmtp"]
-image::https://img.shields.io/github/tag/ghusta/docker-fakesmtp.svg[]
+image:https://img.shields.io/docker/pulls/ghusta/fakesmtp.svg[link="https://hub.docker.com/r/ghusta/fakesmtp"]
+image:https://img.shields.io/github/tag/ghusta/docker-fakesmtp.svg[]
 
 Another docker image for FakeSMTP (https://github.com/Nilhcem/FakeSMTP)
 
