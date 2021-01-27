@@ -1,4 +1,7 @@
 # docker-fakesmtp
+
+[![Docker pulls](https://img.shields.io/docker/pulls/ghusta/fakesmtp.svg?logo=Docker)](https://hub.docker.com/r/ghusta/fakesmtp)
+
 Another docker image for FakeSMTP (https://github.com/Nilhcem/FakeSMTP)
 
 # Overview
@@ -20,3 +23,11 @@ See also docker usage on the [original project](https://github.com/Nilhcem/FakeS
 ## Refactoring
 I use **openjdk** as base image, as **java** image is now _deprecated_ (see https://hub.docker.com/_/java/).
 Furthermore, I use the JRE version, as JDK is not necessary (image _openjdk:8-jre_ for example).
+
+### Available OpenJDK Docker images
+
+Not all versions or alternatives (jdk, jre, slim, etc.) are available.
+
+See which ones there : [Update to version X on base os Y](https://github.com/docker-library/openjdk/issues/272).
+
+At the moment, OpenJDK 8 and 11 Docker images are based on the versions published here : https://adoptopenjdk.net/upstream.html .
