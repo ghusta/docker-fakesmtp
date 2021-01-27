@@ -6,7 +6,7 @@ RUN set -ex; \
     apt install -y wget unzip; \
     wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
     unzip fakeSMTP-latest.zip -d /opt; \
-    apt remove wget unzip; \
+    apt remove -y wget unzip; \
     rm fakeSMTP-latest.zip;
 
 EXPOSE 25
