@@ -6,6 +6,7 @@ RUN set -ex; \
     apk add wget unzip; \
     wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
     unzip fakeSMTP-latest.zip -d /opt; \
+    apk del wget unzip; \
     rm fakeSMTP-latest.zip;
 
 EXPOSE 25
