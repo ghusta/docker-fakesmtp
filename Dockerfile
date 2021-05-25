@@ -1,6 +1,6 @@
-FROM openjdk:8-jre
+FROM openjdk:11-jre
 
-ARG VERSION=2.1
+ARG VERSION=2.2
 RUN set -ex; \
     wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${VERSION}/fakeSMTP-${VERSION}.jar -O fakeSMTP.jar; \
     mv fakeSMTP.jar /opt;
