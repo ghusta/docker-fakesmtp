@@ -1,12 +1,12 @@
 FROM openjdk:8-jre
 
+ARG VERSION=2.1
 RUN set -ex; \
-    wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip; \
-    unzip fakeSMTP-latest.zip -d /opt; \
-    rm fakeSMTP-latest.zip;
+    wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${VERSION}/fakeSMTP-${VERSION}.jar -O fakeSMTP.jar; \
+    mv fakeSMTP.jar /opt;
 
 EXPOSE 25
 VOLUME ["/var/mail"]
 
 # Start the STMP server without a GUI (background)
-CMD java -jar /opt/fakeSMTP-2.0.jar --start-server --background --port 25 --output-dir /var/mail
+CMD java -jar /opt/fakeSMTP.jar --start-server --background --port 25 --output-dir /var/mail
