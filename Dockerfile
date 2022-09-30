@@ -1,4 +1,4 @@
-FROM openjdk:11-jre
+FROM eclipse-temurin:11-jre
 
 ARG VERSION=2.2
 RUN set -ex; \
