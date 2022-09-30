@@ -21,8 +21,8 @@ Starting a container :
 See also docker usage on the [original project](https://github.com/Nilhcem/FakeSMTP#usage-on-docker).
 
 ## Refactoring
-I use **openjdk** as base image, as **java** image is now _deprecated_ (see https://hub.docker.com/_/java/).
-Furthermore, I use the JRE version, as JDK is not necessary (image _openjdk:8-jre_ for example).
+I use **eclipse-temurin** **~openjdk~** as base image, as **java** image is now _deprecated_ (see https://hub.docker.com/_/java/).
+Furthermore, I use the JRE version, as JDK is not necessary (image eclipse-temurin:11-jre_ for example).
 
 ### Available OpenJDK Docker images
 
