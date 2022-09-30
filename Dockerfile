@@ -1,6 +1,6 @@
 FROM eclipse-temurin:11-jre
 
-ARG VERSION=2.2
+ARG VERSION=2.2.1
 RUN set -ex; \
     wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${VERSION}/fakeSMTP-${VERSION}.jar -O fakeSMTP.jar; \
     mv fakeSMTP.jar /opt;
