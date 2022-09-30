@@ -22,7 +22,7 @@ See also docker usage on the [original project](https://github.com/Nilhcem/FakeS
 
 ## Refactoring
 I use **eclipse-temurin** **~openjdk~** as base image, as **java** image is now _deprecated_ (see https://hub.docker.com/_/java/).
-Furthermore, I use the JRE version, as JDK is not necessary (image eclipse-temurin:11-jre_ for example).
+Furthermore, I use the JRE version, as JDK is not necessary (image _eclipse-temurin:11-jre_ for example).
 
 ### Available OpenJDK Docker images
 
