@@ -1,6 +1,7 @@
 # docker-fakesmtp
 
 [![Docker pulls](https://img.shields.io/docker/pulls/ghusta/fakesmtp.svg?logo=Docker)](https://hub.docker.com/r/ghusta/fakesmtp)
+[![GitHub release](https://img.shields.io/github/v/release/ghusta/docker-fakesmtp?sort=semver&logo=GitHub)](https://github.com/ghusta/docker-fakesmtp/releases)
 
 Another docker image for FakeSMTP (https://github.com/Nilhcem/FakeSMTP)
 
