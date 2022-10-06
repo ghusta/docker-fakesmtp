@@ -1,8 +1,9 @@
-FROM eclipse-temurin:11-jre
+ARG JAVA_IMAGE_TAG=11-jre
+FROM eclipse-temurin:$JAVA_IMAGE_TAG
 
-ARG VERSION=2.2.1
+ARG APP_VERSION=2.2.1
 RUN set -ex; \
-    wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${VERSION}/fakeSMTP-${VERSION}.jar -O fakeSMTP.jar; \
+    wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${APP_VERSION}/fakeSMTP-${APP_VERSION}.jar -O fakeSMTP.jar; \
     mv fakeSMTP.jar /opt;
 
 EXPOSE 25
