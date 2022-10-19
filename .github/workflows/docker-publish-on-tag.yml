@@ -60,7 +60,10 @@ jobs:
           context: .
           build-args: |
             JAVA_IMAGE_TAG=17-jre
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: |
+            linux/amd64
+            linux/arm64/v8
+            linux/arm/v7
           push: true
           tags: ${{ steps.meta-jre17.outputs.tags }}
           labels: ${{ steps.meta-jre17.outputs.labels }}
@@ -91,7 +94,10 @@ jobs:
           context: .
           build-args: |
             JAVA_IMAGE_TAG=11-jre
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: |
+            linux/amd64
+            linux/arm64/v8
+            linux/arm/v7
           push: true
           tags: ${{ steps.meta-jre11.outputs.tags }}
           labels: ${{ steps.meta-jre11.outputs.labels }}
