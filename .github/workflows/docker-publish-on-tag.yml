@@ -65,6 +65,7 @@ jobs:
             linux/arm64/v8
             linux/arm/v7
           push: true
+          provenance: false
           tags: ${{ steps.meta-jre17.outputs.tags }}
           labels: ${{ steps.meta-jre17.outputs.labels }}
           cache-from: type=gha
@@ -99,6 +100,7 @@ jobs:
             linux/arm64/v8
             linux/arm/v7
           push: true
+          provenance: false
           tags: ${{ steps.meta-jre11.outputs.tags }}
           labels: ${{ steps.meta-jre11.outputs.labels }}
           cache-from: type=gha
