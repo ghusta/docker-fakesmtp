@@ -37,7 +37,7 @@ jobs:
       # https://github.com/marketplace/actions/docker-metadata-action
       - name: Extract Docker metadata / suffix jre17
         id: meta-jre17
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         env:
           TAG_SUFFIX: '-jre17'
         with:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Extract Docker metadata / suffix jre11
         id: meta-jre11
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         env:
           TAG_SUFFIX: '-jre11'
         with:
