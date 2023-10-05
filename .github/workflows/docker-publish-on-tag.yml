@@ -131,5 +131,13 @@ jobs:
             ```shell
             docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}
             ```
+            
+            Alternatively, you can pull an image with a given JRE:
+            ```shell
+            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre17
+            ```
+            ```shell
+            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre11
+            ```
           draft: false
           prerelease: false
