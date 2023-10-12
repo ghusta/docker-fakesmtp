@@ -31,4 +31,4 @@ Not all versions or alternatives (jdk, jre, slim, etc.) are available.
 
 See which ones there : [Update to version X on base os Y](https://github.com/docker-library/openjdk/issues/272).
 
-At the moment, OpenJDK 8 and 11 Docker images are based on the versions published here : https://adoptopenjdk.net/upstream.html .
+At the moment, OpenJDK 11, 17, 21 Docker images are based on the versions published here : https://adoptium.net/temurin/releases/ .
