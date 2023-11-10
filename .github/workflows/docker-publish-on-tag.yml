@@ -105,41 +105,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Extract Docker metadata / suffix jre11
-        id: meta-jre11
-        uses: docker/metadata-action@v5
-        env:
-          TAG_SUFFIX: '-jre11'
-        with:
-          images: ${{ env.IMAGE_NAME }}
-          flavor: |
-            latest=false
-            suffix=${{ env.TAG_SUFFIX }}
-          tags: |
-            # semver-only tags
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-
-      # Build and push Docker image with Buildx
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker images (multi-architecture) / jre11
-        id: build-and-push-jre11
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          build-args: |
-            JAVA_IMAGE_TAG=11-jre
-          platforms: |
-            linux/amd64
-            linux/arm64/v8
-            linux/arm/v7
-          push: true
-          provenance: false
-          tags: ${{ steps.meta-jre11.outputs.tags }}
-          labels: ${{ steps.meta-jre11.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
   create-github-release:
     needs: [ docker-publish ]
     runs-on: ubuntu-latest
@@ -172,9 +137,6 @@ jobs:
             ```
             ```shell
             docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre17
-            ```
-            ```shell
-            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre11
             ```
           draft: false
           prerelease: false
