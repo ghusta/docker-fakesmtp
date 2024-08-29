@@ -10,4 +10,4 @@ EXPOSE 25
 VOLUME ["/var/mail"]
 
 # Start the STMP server without a GUI (background)
-CMD java -jar /opt/fakeSMTP.jar --background --port 25 --output-dir /var/mail
+CMD ["java", "-jar", "/opt/fakeSMTP.jar", "--background", "--port", "25", "--output-dir", "/var/mail"]
