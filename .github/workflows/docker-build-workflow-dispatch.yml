@@ -62,10 +62,11 @@ jobs:
         uses: docker/metadata-action@v5
         env:
           TAG_SUFFIX: '-jre21'
+          IS_LATEST: 'true'  # Set to 'false' if this should not be latest
         with:
           images: ${{ env.IMAGE_NAME }}
           flavor: |
-            latest=true
+            latest=${{ env.IS_LATEST }}
           tags: |
             # semver-only tags
             type=semver,pattern={{version}},value=${{ env.LATEST_TAG }}
@@ -76,3 +77,26 @@ jobs:
       - name: Display tags generated
         run: |
           echo "Tags are : ${{ steps.meta-jre21.outputs.tags }}"
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/marketplace/actions/docker-metadata-action
+      - name: Extract Docker metadata / suffix jre17
+        id: meta-jre17
+        uses: docker/metadata-action@v5
+        env:
+          TAG_SUFFIX: '-jre17'
+          IS_LATEST: 'false'
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: |
+            latest=${{ env.IS_LATEST }}
+          tags: |
+            # semver-only tags
+            type=semver,pattern={{version}},value=${{ env.LATEST_TAG }}
+            type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }},value=${{ env.LATEST_TAG }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ env.LATEST_TAG }}
+            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }},value=${{ env.LATEST_TAG }}
+
+      - name: Display tags generated
+        run: |
+          echo "Tags are : ${{ steps.meta-jre17.outputs.tags }}"
