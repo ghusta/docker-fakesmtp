@@ -32,10 +32,13 @@ jobs:
     needs: [ get-latest-tag ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures all tags are fetched
 
       - name: Get Latest Git Tag
-        id: fetch-latest-tag-bis
+        id: fetch-latest-tag
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo "Latest tag: $LATEST_TAG"
