@@ -34,6 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Get Latest Git Tag
+        id: fetch-latest-tag
+        run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Latest tag: $LATEST_TAG"
+          echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV  # Set as env variable
+          echo "::set-output name=latest-tag::$LATEST_TAG"  # Set as output
+
       - # Add support for more platforms with QEMU (optional)
         # https://github.com/marketplace/actions/docker-setup-qemu
         name: Set up QEMU
