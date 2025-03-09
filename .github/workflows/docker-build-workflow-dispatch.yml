@@ -1,0 +1,29 @@
+name: Manual Trigger with Latest Git Tag
+
+on:
+  workflow_dispatch:  # Allows manual execution
+
+env:
+  IMAGE_NAME: ghusta/fakesmtp
+  ENABLE_QEMU: 1
+
+jobs:
+  get-latest-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures all tags are fetched
+
+      - name: Get Latest Git Tag
+        id: fetch-latest-tag
+        run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Latest tag: $LATEST_TAG"
+          echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV  # Set as env variable
+          echo "::set-output name=latest-tag::$LATEST_TAG"  # Set as output
+
+      - name: Display Latest Tag
+        run: |
+          echo "The latest Git tag is ${{ steps.fetch-latest-tag.outputs.latest-tag }}"
