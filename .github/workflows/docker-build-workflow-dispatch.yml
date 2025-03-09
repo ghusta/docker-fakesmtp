@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Get Latest Git Tag
-        id: fetch-latest-tag
+        id: fetch-latest-tag-bis
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo "Latest tag: $LATEST_TAG"
