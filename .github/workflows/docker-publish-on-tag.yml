@@ -40,10 +40,11 @@ jobs:
         uses: docker/metadata-action@v5
         env:
           TAG_SUFFIX: '-jre21'
+          IS_LATEST: 'true'  # Set to 'false' if this should not be latest
         with:
           images: ${{ env.IMAGE_NAME }}
           flavor: |
-            latest=true
+            latest=${{ env.IS_LATEST }}
           tags: |
             # semver-only tags
             type=semver,pattern={{version}}
@@ -75,10 +76,11 @@ jobs:
         uses: docker/metadata-action@v5
         env:
           TAG_SUFFIX: '-jre17'
+          IS_LATEST: 'false'
         with:
           images: ${{ env.IMAGE_NAME }}
           flavor: |
-            latest=false
+            latest=${{ env.IS_LATEST }}
             suffix=${{ env.TAG_SUFFIX }}
           tags: |
             # semver-only tags
