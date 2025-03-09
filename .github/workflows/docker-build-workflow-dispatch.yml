@@ -27,3 +27,41 @@ jobs:
       - name: Display Latest Tag
         run: |
           echo "The latest Git tag is ${{ steps.fetch-latest-tag.outputs.latest-tag }}"
+
+  docker-build-test:
+    needs: [ get-latest-tag ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - # Add support for more platforms with QEMU (optional)
+        # https://github.com/marketplace/actions/docker-setup-qemu
+        name: Set up QEMU
+        if: ${{ env.ENABLE_QEMU == '1' }}
+        uses: docker/setup-qemu-action@v3
+
+      # https://github.com/marketplace/actions/docker-setup-buildx
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/marketplace/actions/docker-metadata-action
+      - name: Extract Docker metadata / suffix jre21
+        id: meta-jre21
+        uses: docker/metadata-action@v5
+        env:
+          TAG_SUFFIX: '-jre21'
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: |
+            latest=true
+          tags: |
+            # semver-only tags
+            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }}
+
+      - name: Display tags generated
+        run: |
+          echo "Tags are : ${{ steps.meta-jre21.outputs.tags }}"
