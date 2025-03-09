@@ -56,6 +56,7 @@ jobs:
           flavor: |
             latest=true
           tags: |
+            ${{ env.LATEST_TAG }}
             # semver-only tags
             type=semver,pattern={{version}}
             type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }}
