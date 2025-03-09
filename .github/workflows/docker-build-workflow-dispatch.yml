@@ -70,8 +70,8 @@ jobs:
             # semver-only tags
             type=semver,pattern={{version}},value=${{ env.LATEST_TAG }}
             type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }},value=${{ env.LATEST_TAG }}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ env.LATEST_TAG }}
+            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }},value=${{ env.LATEST_TAG }}
 
       - name: Display tags generated
         run: |
