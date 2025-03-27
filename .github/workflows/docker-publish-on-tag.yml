@@ -35,11 +35,11 @@ jobs:
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/marketplace/actions/docker-metadata-action
-      - name: Extract Docker metadata / suffix jre24
-        id: meta-jre24
+      - name: Extract Docker metadata / suffix jre25
+        id: meta-jre25
         uses: docker/metadata-action@v5
         env:
-          TAG_SUFFIX: '-jre24'
+          TAG_SUFFIX: '-jre25'
           IS_LATEST: 'true'  # Set to 'false' if this should not be latest
         with:
           images: ${{ env.IMAGE_NAME }}
@@ -54,20 +54,20 @@ jobs:
 
       # Build and push Docker image with Buildx
       # https://github.com/docker/build-push-action
-      - name: Build and push Docker images (multi-architecture) / jre24
-        id: build-and-push-jre24
+      - name: Build and push Docker images (multi-architecture) / jre25
+        id: build-and-push-jre25
         uses: docker/build-push-action@v6
         with:
           context: .
           build-args: |
-            JAVA_IMAGE_TAG=24-jre
+            JAVA_IMAGE_TAG=25-jre
           platforms: |
             linux/amd64
             linux/arm64/v8
           push: true
           provenance: false
-          tags: ${{ steps.meta-jre24.outputs.tags }}
-          labels: ${{ steps.meta-jre24.outputs.labels }}
+          tags: ${{ steps.meta-jre25.outputs.tags }}
+          labels: ${{ steps.meta-jre25.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -174,7 +174,7 @@ jobs:
             
             Alternatively, you can pull an image with a given JRE:
             ```shell
-            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre24
+            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre25
             ```
             ```shell
             docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre21
