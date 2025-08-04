@@ -1,7 +1,7 @@
 ARG JAVA_IMAGE_TAG=17-jre
 FROM eclipse-temurin:$JAVA_IMAGE_TAG
 
-ARG APP_VERSION=2.7.0
+ARG APP_VERSION=2.7.1
 RUN set -ex; \
     wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${APP_VERSION}/fakeSMTP-${APP_VERSION}.jar -O fakeSMTP.jar; \
     mv fakeSMTP.jar /opt;
