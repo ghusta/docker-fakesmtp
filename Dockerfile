@@ -3,7 +3,9 @@ FROM eclipse-temurin:$JAVA_IMAGE_TAG
 
 ARG APP_VERSION=2.8.0
 RUN set -ex; \
+    apt-get update && apt-get install -y wget; \
     wget -q https://github.com/ghusta/FakeSMTP/releases/download/v${APP_VERSION}/fakeSMTP-${APP_VERSION}.jar -O fakeSMTP.jar; \
+    rm -rf /var/lib/apt/lists/*; \
     mv fakeSMTP.jar /opt;
 
 EXPOSE 25
