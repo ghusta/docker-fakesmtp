@@ -37,7 +37,7 @@ jobs:
       # https://github.com/marketplace/actions/docker-metadata-action
       - name: Extract Docker metadata / suffix jre25
         id: meta-jre25
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         env:
           TAG_SUFFIX: '-jre25'
           IS_LATEST: 'true'  # Set to 'false' if this should not be latest
@@ -75,7 +75,7 @@ jobs:
       # https://github.com/marketplace/actions/docker-metadata-action
       - name: Extract Docker metadata / suffix jre21
         id: meta-jre21
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         env:
           TAG_SUFFIX: '-jre21'
           IS_LATEST: 'false'
@@ -111,7 +111,7 @@ jobs:
 
       - name: Extract Docker metadata / suffix jre17
         id: meta-jre17
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         env:
           TAG_SUFFIX: '-jre17'
           IS_LATEST: 'false'
