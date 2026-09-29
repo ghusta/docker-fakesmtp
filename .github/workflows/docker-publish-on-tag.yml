@@ -35,12 +35,50 @@ jobs:
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/marketplace/actions/docker-metadata-action
+      - name: Extract Docker metadata / suffix jre27
+        id: meta-jre27
+        uses: docker/metadata-action@v6
+        env:
+          TAG_SUFFIX: '-jre27'
+          IS_LATEST: 'true'  # Set to 'false' if this should not be latest
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: |
+            latest=${{ env.IS_LATEST }}
+          tags: |
+            # semver-only tags
+            type=semver,pattern={{version}},enable=${{ env.IS_LATEST }}
+            type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ env.IS_LATEST }}
+            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }}
+
+      # Build and push Docker image with Buildx
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker images (multi-architecture) / jre27
+        id: build-and-push-jre27
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          build-args: |
+            JAVA_IMAGE_TAG=27-jre
+          platforms: |
+            linux/amd64
+            linux/arm64/v8
+          push: true
+          provenance: false
+          tags: ${{ steps.meta-jre27.outputs.tags }}
+          labels: ${{ steps.meta-jre27.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/marketplace/actions/docker-metadata-action
       - name: Extract Docker metadata / suffix jre25
         id: meta-jre25
         uses: docker/metadata-action@v6
         env:
           TAG_SUFFIX: '-jre25'
-          IS_LATEST: 'true'  # Set to 'false' if this should not be latest
+          IS_LATEST: 'false'
         with:
           images: ${{ env.IMAGE_NAME }}
           flavor: |
