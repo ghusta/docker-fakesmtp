@@ -1,7 +1,7 @@
 ARG JAVA_IMAGE_TAG=17-jre
 FROM eclipse-temurin:$JAVA_IMAGE_TAG
 
-ARG APP_VERSION=2.8.3
+ARG APP_VERSION=2.8.4
 # ca-certificates needed
 ADD https://github.com/ghusta/FakeSMTP/releases/download/v${APP_VERSION}/fakeSMTP-${APP_VERSION}.jar /opt/fakeSMTP.jar
 
