@@ -212,6 +212,9 @@ jobs:
             
             Alternatively, you can pull an image with a given JRE:
             ```shell
+            docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre27
+            ```
+            ```shell
             docker pull ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-jre25
             ```
             ```shell
