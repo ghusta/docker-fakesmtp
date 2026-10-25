@@ -17,7 +17,15 @@ This allows you to run a SMTP server for testing applications which send mail. E
 
 Starting a container :
 
-    docker run -d -p 2525:25 -v /tmp/fakemail:/var/mail ghusta/fakesmtp:2.8
+```shell
+docker run -d -p 2525:25 -v /tmp/fakemail:/var/mail ghusta/fakesmtp:2.8
+```
+
+Using Podman, with SELinux :
+
+```shell
+podman run -d -p 2525:25 -v /tmp/fakemail:/var/mail:Z ghusta/fakesmtp:2.8
+```
 
 See also docker usage on the [original project](https://github.com/Nilhcem/FakeSMTP#usage-on-docker).
 
