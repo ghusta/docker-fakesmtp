@@ -64,6 +64,7 @@ jobs:
           platforms: |
             linux/amd64
             linux/arm64/v8
+          pull: true
           push: true
           provenance: false
           tags: ${{ steps.meta-jre27.outputs.tags }}
@@ -102,6 +103,7 @@ jobs:
           platforms: |
             linux/amd64
             linux/arm64/v8
+          pull: true
           push: true
           provenance: false
           tags: ${{ steps.meta-jre25.outputs.tags }}
@@ -140,6 +142,7 @@ jobs:
           platforms: |
             linux/amd64
             linux/arm64/v8
+          pull: true
           push: true
           provenance: false
           tags: ${{ steps.meta-jre21.outputs.tags }}
@@ -177,6 +180,7 @@ jobs:
             linux/amd64
             linux/arm64/v8
             linux/arm/v7
+          pull: true
           push: true
           provenance: false
           tags: ${{ steps.meta-jre17.outputs.tags }}
