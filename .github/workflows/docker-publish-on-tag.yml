@@ -66,7 +66,8 @@ jobs:
             linux/arm64/v8
           pull: true
           push: true
-          provenance: false
+          provenance: mode=max
+          sbom: true
           tags: ${{ steps.meta-jre27.outputs.tags }}
           labels: ${{ steps.meta-jre27.outputs.labels }}
           cache-from: type=gha
@@ -105,7 +106,8 @@ jobs:
             linux/arm64/v8
           pull: true
           push: true
-          provenance: false
+          provenance: mode=max
+          sbom: true
           tags: ${{ steps.meta-jre25.outputs.tags }}
           labels: ${{ steps.meta-jre25.outputs.labels }}
           cache-from: type=gha
@@ -144,7 +146,8 @@ jobs:
             linux/arm64/v8
           pull: true
           push: true
-          provenance: false
+          provenance: mode=max
+          sbom: true
           tags: ${{ steps.meta-jre21.outputs.tags }}
           labels: ${{ steps.meta-jre21.outputs.labels }}
           cache-from: type=gha
@@ -182,7 +185,8 @@ jobs:
             linux/arm/v7
           pull: true
           push: true
-          provenance: false
+          provenance: mode=max
+          sbom: true
           tags: ${{ steps.meta-jre17.outputs.tags }}
           labels: ${{ steps.meta-jre17.outputs.labels }}
           cache-from: type=gha
